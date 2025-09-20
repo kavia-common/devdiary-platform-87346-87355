@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/devdiary-platform-87346-87355/devdiary_frontend"
+}
