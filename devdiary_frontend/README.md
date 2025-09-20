@@ -1,82 +1,67 @@
-# Lightweight React Template for KAVIA
+# DevDiary Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Modern, modular React application implementing the DevDiary UI with the Ocean Professional theme.
 
-## Features
+## Highlights
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Ocean Professional theme (primary #2563EB, secondary #F59E0B, error #EF4444)
+- Global CSS variables and dark mode via ThemeProvider
+- Modular layout: Sidebar, Topbar, RightPanel with activity feed
+- Modules/pages: Logs, Standup, Integrations, Insights
+- Reusable components: Button, Card, Modal, Input, Tag
+- React Router for navigation
+- Fetch wrapper and environment config scaffolds
+- Accessible interactions with keyboard and focus states
+- Smooth transitions and minimalist design
 
-## Getting Started
+## Project Structure
 
-In the project directory, you can run:
+- src/styles/global.css — theme variables, base styles
+- src/theme/theme.js — theme constant (colors)
+- src/context/ThemeContext.js — theme provider and hook
+- src/components/common/ — reusable UI components
+- src/components/layout/ — Sidebar, Topbar, RightPanel, MainLayout
+- src/pages/ — Logs, Standup, Integrations, Insights
+- src/config/env.js — environment configuration (baseURL)
+- src/services/http.js — GET/POST wrappers
 
-### `npm start`
+## Run
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- npm install
+- npm start
+- Open http://localhost:3000
 
-### `npm test`
+## Environment
 
-Launches the test runner in interactive watch mode.
+Create a .env file (do not commit secrets):
 
-### `npm run build`
+REACT_APP_API_BASE=https://your-backend.example.com/api
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If not provided, defaults to http://localhost:4000/api.
 
-## Customization
+## Backend Integration TODOs
 
-### Colors
+- Logs: POST /logs to persist entries (currently local list)
+- Standup: POST /standup/generate to generate summaries
+- Integrations: POST /integrations/:key/connect to start OAuth
+- Insights: Replace mock KPIs and trends with real metrics
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+Update src/config/env.js and use src/services/http.js for API calls.
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+## Accessibility
 
-### Components
+- Focus-visible rings
+- A11y labels on buttons, modal has correct aria attributes
+- Keyboard ESC to close modal
+- High contrast dark mode
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Architecture Notes
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+- Routing is provided by react-router-dom v6
+- Layout composes Left Sidebar, Topbar, Main content, RightPanel
+- Theme is stored in localStorage and applied on root `data-theme`
+- Styling uses CSS variables and inline styles for component theming
 
-## Learn More
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Internal use.
